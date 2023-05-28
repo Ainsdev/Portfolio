@@ -142,7 +142,7 @@ export default function IndexPage() {
       <div className='z-40 mt-36 inline-block w-max px-20 text-center'>
         <h1 className='text-7xl font-bold text-accent underline'>My Projects</h1>
       </div>
-      <CardWithGlow />
+      {/* <CardWithGlow /> */}
       <div className='z-40 mt-36 inline-block w-max px-20 text-center'>
         <h1 className='text-7xl font-bold text-accent'>Building... 🛠️</h1>
       </div>
