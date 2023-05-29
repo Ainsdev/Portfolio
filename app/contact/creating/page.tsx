@@ -113,12 +113,25 @@ const pricingData2 = (
     </ul>
   </div>
 )
-export default function CreatingPage() {
+const CreatingPage = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
+
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      const json = await response.json()
+      console.log(json)
+    } catch (error) {
+      console.log(error)
+    }
   }
   // checked Pricings
   const [checked, setChecked] = useState([false, false])
@@ -169,10 +182,10 @@ export default function CreatingPage() {
                     <div
                       onClick={() => {
                         field.onChange(!field.value)
-                        setChecked([!checked[0], false])
+                        setChecked([false, !checked[1]])
                       }}
                     >
-                      <CardWithGlow checked={checked[0]}>
+                      <CardWithGlow checked={checked[1]}>
                         {pricingData1}
                       </CardWithGlow>
                     </div>
@@ -218,7 +231,11 @@ export default function CreatingPage() {
               <FormItem>
                 <FormLabel>Mail para cosas Tecnicas</FormLabel>
                 <FormControl>
-                  <Input className="border-secondary" placeholder="mailtecnico@gmail.com" {...field} />
+                  <Input
+                    className="border-secondary"
+                    placeholder="mailtecnico@gmail.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>Se usara para cosas tecnicas</FormDescription>
                 <FormMessage />
@@ -232,7 +249,8 @@ export default function CreatingPage() {
               <FormItem>
                 <FormLabel>Mensaje</FormLabel>
                 <FormControl>
-                  <Textarea className="border-secondary"
+                  <Textarea
+                    className="border-secondary"
                     placeholder="Hola, me gustaria una pagina que..."
                     {...field}
                   />
@@ -251,7 +269,11 @@ export default function CreatingPage() {
               <FormItem>
                 <FormLabel>Nombre</FormLabel>
                 <FormControl>
-                  <Input className="border-secondary" placeholder="Juan Perez" {...field} />
+                  <Input
+                    className="border-secondary"
+                    placeholder="Juan Perez"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>Como te llamas?</FormDescription>
                 <FormMessage />
@@ -265,7 +287,11 @@ export default function CreatingPage() {
               <FormItem>
                 <FormLabel>Telefono</FormLabel>
                 <FormControl>
-                  <Input className="border-secondary" placeholder="+569 1234 5678" {...field} />
+                  <Input
+                    className="border-secondary"
+                    placeholder="+569 1234 5678"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -322,3 +348,5 @@ export default function CreatingPage() {
     </section>
   )
 }
+
+export default CreatingPage

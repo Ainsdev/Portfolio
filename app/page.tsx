@@ -129,11 +129,11 @@ export default function IndexPage() {
             className='text-accent-2 absolute hidden whitespace-nowrap text-9xl font-bold tracking-wide md:flex lg:text-[180px] 2xl:text-[200px] 3xl:text-[215px] 4xl:text-[240px]'>THINGS</motion.h1>
         </div>
       </section>
-      <div className='absolute bottom-5 left-1/2 animate-bounce'>
+      {/* <div className='absolute bottom-5 left-1/2 animate-bounce'>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-6 w-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
         </svg>
-      </div>
+      </div> */}
       <div className='h-screen'></div>
       <div className='z-40 mt-20 px-20 sm:mt-48'>
         <h1 className='text-5xl font-bold text-accent underline md:text-7xl'>About Me</h1>
