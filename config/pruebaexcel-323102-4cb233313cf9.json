@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "pruebaexcel-323102",
+  "private_key_id": "4cb233313cf9f978b92c8dcacca9bc17890c3ba6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDnmOUREkkqJqg2\nXBAA0HcPuvDoqMcWDSgaapQv9B/72gEAjFNGcWjoMAOQEW/QL42l4cC3FgXMVCzu\n+CzaMqTUeEdlw/u5YoV13sGUHxMbry/f3H/nl7QlL0/NhWjNWzMg6dt8pYYR3Q/4\n0QAYq/psGUrLqfJtWd+xT40OMIgMI5V/hdYUQTIOK2kgMI6O3q+mzh4m+Mjd2BPX\njwsRyLVXS6iG/WYHxfsFas/MsXbs8fnYwgzMKskgbEGE/q5D892Z28zTS6kWJfKa\nnLl0TGN5wBE0zPMJP1rQj2uc7wq5yp4OE5YImWIX8Np3vcvvUSmWnf28VxEPISdW\nG7BYKW5pAgMBAAECggEAXx+3hkmCb6OtF5a8o/j7ziQ0avtXukDxJdh8wS1+LY2f\nN8BrO9W9BxEhhX0D9fhyL54H76tF+mTgh867bWu7s+ErQis7KyvCMWWrENGqoYZV\nHZeNmWv/+/3wwzN2llJNL8md8xZxeMjZlJMTfQ62Lsw8omZNQojVjhhkkV1xo7n5\n1gYJ95XO2e5IDdTmyNiGpz50ssa/q+jZzM+sbeEr69qQzNW4ouNSdPOAmqRzHplo\nLA+5MiJKmqUO1NbupeMBfxYEO3sGE/5Nn3zEbzSlfHEurLJJU94BFj02vXZEF4eY\niN5LDqQERcqghfIzfTITHeGZTH0b2x28uDvmY/ALmQKBgQD2a4v07VM0RVqm+prW\nkpj0FC0++qJoxCLbp+/jalaN7VDlXNK4UK9PMqEk+K+XxwwbpVpxXpmHdXQY7b8d\nJxMWKD876iyXuEUDXQCrrYX109enHJhSWPTvmhGzldTsWg2ngemzJ9JhInE/qIhT\nuk1A/v7gPwVjwBDXmNXTxBqXCwKBgQDwmdN+6eAQY6IoYdVbL4oxbWnOq6X97Zzl\nDLRjplPWOUgmyC+cJzw0j5Gi7uSBhJ276VbH5lqaWkSDQ3u3G8JVL3ZNhmROt8k4\nJiweGLTFP0jgf+98szAuHa9pJHECdBfhrWdrRE14u/1//BdFH4anclpmrjLNlbrG\n3c+8qcGo2wKBgBuTcXgZTuRcloZ1KPq2MROvZljT53Td7iCyrG/AqKr9Ub45IwOp\nU9UDD3F5uvy7M6msWXCya2/zPujDQk3a35HtMxZbYF4iKubzc23C32jhKhLzakBc\n4BwoG68DJ27DrR9/tE1uOWbRWecLzyW/hYGuh4tEwi+lgLz/x34JRgh9AoGBAIP/\nsMO5Jd93+ffzrK0JSOTTJTBohXnpiaE0NidRkj8+T/JO86fU8rfXaEweiijwi+UT\nIDQtkdmK2nm1ZUNRLG21y06/A3sYY4G1l5Cvd0Wb8ayRI9+jIzS5vomNn557+Los\ne0ejQmmRoYM817tpj2OAXk5lFaQqmD0QZi8YZxHvAoGAMPIPSGqAuS1FhPcOdioF\nv28oHNNUWNPYfse8Cx1sLkaaKDgQW/juW+9BJqcjY8KC41A4pmBIVITPNG+e4TVl\n8rWNeB4vE/doHq+n+MzuQBg3mtm2UVv1bG8XAE3Ij6XvURwBlip7zH8UJnNiX2+o\nzHvVKRX5VoTUlNnJq7GQW1c=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ainscompany@pruebaexcel-323102.iam.gserviceaccount.com",
+  "client_id": "102658954912784948753",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ainscompany%40pruebaexcel-323102.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

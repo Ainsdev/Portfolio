@@ -19,7 +19,7 @@ export default function ContactLayout({ children }: { children: React.ReactNode 
         router.push(tab);
     }
     return (
-        <main className='flex h-screen w-screen flex-col items-center justify-center gap-5 scroll-smooth sm:pt-72 pt-[880px]'>
+        <main className='flex h-screen w-screen flex-col items-center justify-start gap-5 scroll-smooth  pt-72'>
             <h1 className='text-4xl font-bold'>Contactame</h1>
             <div className="flex space-x-1 rounded-full border-2 bg-black p-2 text-white">
                 {tabs.map((tab) => (
