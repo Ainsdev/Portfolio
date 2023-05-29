@@ -127,8 +127,8 @@ const CreatingPage = () => {
         },
         body: JSON.stringify(data),
       })
-      const json = await response.json()
-      console.log(json)
+      .then((res) => form.reset())
+      .catch((error) => console.log(error))
     } catch (error) {
       console.log(error)
     }
