@@ -118,6 +118,7 @@ const CreatingPage = () => {
     resolver: zodResolver(FormSchema),
   })
 
+  
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       const response = await fetch("/api", {
@@ -127,10 +128,10 @@ const CreatingPage = () => {
         },
         body: JSON.stringify(data),
       })
-      .then((res) => form.reset())
-      .catch((error) => console.log(error))
+      const json = await response.json()
+      alert(JSON.stringify(json))
     } catch (error) {
-      console.log(error)
+      alert(error)
     }
   }
   // checked Pricings
@@ -237,7 +238,7 @@ const CreatingPage = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Se usara para cosas tecnicas</FormDescription>
+                <FormDescription>Se usara para cosas tecnicas o contactarte</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
