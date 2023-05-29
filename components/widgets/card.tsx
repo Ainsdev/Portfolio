@@ -1,46 +1,44 @@
-import { motion } from 'framer-motion';
+'use client'
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { Check } from "lucide-react";
+import { MouseEvent } from "react";
 
-const CardWithGlow = () => {
-    const cardVariants = {
-        hover: {
-            scale: 1.05,
-        },
-        initial: {
-            scale: 1,
-        },
-    };
+export default function CardWithGlow({ children, checked }: { children: React.ReactNode, checked: boolean }) {
+    let mouseX = useMotionValue(0);
+    let mouseY = useMotionValue(0);
 
-    const glowVariants = {
-        hover: {
-            opacity: 0.8,
-        },
-        initial: {
-            scale: 1.05,
-            opacity: 0,
-        },
-    };
+    function handleMouseMove({
+        currentTarget,
+        clientX,
+        clientY,
+    }: MouseEvent) {
+        let { left, top } = currentTarget.getBoundingClientRect();
+
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
 
     return (
-        <motion.div className='relative h-[120px] w-[300px]' initial whileHover='hover'>
-            <motion.div className='absolute left-0 top-0 h-full w-full rounded-xl bg-gradient-to-r from-pink-500 to-blue-500     blur-3xl'
-                variants={glowVariants}
-                transition={{
-                    ease: 'easeOut',
-                    delay: 0.15,
+        <div
+            className="group relative max-w-md rounded-xl border border-white/10 bg-gray-900 px-8 py-16 shadow-2xl"
+            onMouseMove={handleMouseMove}
+        >
+            <motion.div
+                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                    background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(14, 165, 233, 0.15),
+              transparent 80%
+            )
+          `,
                 }}
             />
-            <motion.div className='relative mb-0 h-full overflow-hidden rounded-xl bg-blue-500 px-36 py-24'
-                variants={cardVariants}
-                transition={{
-                    ease: 'easeOut',
-                    delay: 0.15,
-                    duration: 0.5,
-                }}
-            >
-                <div className='flex h-16 items-center justify-center'>✨ Hover me ✨</div>
-            </motion.div>
-        </motion.div>
+            <div className="absolute left-3 top-3 h-5 w-5 rounded-3xl border-2 border-sky-500 bg-white">
+                {checked && <Check className="h-full w-full text-black" />}
+            </div>
+            {children}
+        </div>
     );
-};
-
-export default CardWithGlow;
+}
