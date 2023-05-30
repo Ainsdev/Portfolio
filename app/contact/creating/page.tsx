@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -118,9 +119,9 @@ const CreatingPage = () => {
     resolver: zodResolver(FormSchema),
   })
 
-  
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
+      setLoading(true)
       const response = await fetch("/api", {
         method: "POST",
         headers: {
@@ -130,12 +131,15 @@ const CreatingPage = () => {
       })
       const json = await response.json()
       alert("Se ha mandado con exito")
+      setLoading(false)
     } catch (error) {
       alert(error)
     }
   }
   // checked Pricings
   const [checked, setChecked] = useState([false, false])
+  //check loading
+  const [loading, setLoading] = useState(false)
 
   return (
     <section className="flex h-full w-full flex-col items-center justify-center gap-2 p-2">
@@ -238,7 +242,9 @@ const CreatingPage = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Se usara para cosas tecnicas o contactarte</FormDescription>
+                <FormDescription>
+                  Se usara para cosas tecnicas o contactarte
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -342,7 +348,11 @@ const CreatingPage = () => {
               className="text-center"
               type="submit"
             >
-              Enviar
+              {loading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                "Enviar"
+              )}
             </Button>
           </div>
         </form>
