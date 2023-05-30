@@ -32,7 +32,7 @@ const FormSchema = z.object({
   email: z.string().email({ message: "Email Invalido" }),
   message: z.string().min(7, { message: "Mensaje muy corto" }),
   focus: z.string().min(1, { message: "Selecciona una opcion" }),
-  phone: z.string().min(9, { message: "Telefono invalido" }),
+  phone: z.number().min(9, { message: "Telefono invalido" }),
   name: z.string().min(3, { message: "Nombre invalido" }),
   // Boolean Pricings
   basic: z.boolean().default(false).optional(),
@@ -290,7 +290,8 @@ const CreatingPage = () => {
                 <FormControl>
                   <Input
                     className="border-secondary"
-                    placeholder="+569 1234 5678"
+                    placeholder="569 1234 5678"
+                    type="tel"
                     {...field}
                   />
                 </FormControl>
