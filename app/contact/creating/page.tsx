@@ -129,7 +129,7 @@ const CreatingPage = () => {
         body: JSON.stringify(data),
       })
       const json = await response.json()
-      alert(JSON.stringify(json))
+      alert("Se ha mandado con exito")
     } catch (error) {
       alert(error)
     }
