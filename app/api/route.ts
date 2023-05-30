@@ -33,8 +33,8 @@ export async function POST(request: NextRequest) {
   try {
     const auth = new google.auth.GoogleAuth({
       credentials: {
-        client_email: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY ? process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n") : undefined,
+        client_email: process.env.production?.GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.production?.GOOGLE_PRIVATE_KEY ? process.env.production?.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n") : undefined,
       },
       scopes: [
         "https://www.googleapis.com/auth/drive",
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       version: "v4",
     })
     const response = await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID,
+      spreadsheetId: process.env.production?.GOOGLE_SHEET_ID,
       range: "A1:D1",
       valueInputOption: "USER_ENTERED",
       requestBody: {
