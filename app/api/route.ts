@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
         ],
       },
     })
-    return new Response(JSON.stringify({ message: "Exitoso"}), {
+    return new Response(JSON.stringify({ message: "Exitoso!!"}), {
       headers: { "content-type": "application/json" },
     })
   } catch (error) {
