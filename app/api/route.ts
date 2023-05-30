@@ -1,5 +1,4 @@
 import { NextRequest } from "next/server"
-import { GoogleSpreadsheet } from "google-spreadsheet"
 import { google } from "googleapis"
 
 type SheetForm = {
@@ -35,7 +34,7 @@ export async function POST(request: NextRequest) {
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        private_key: process.env.GOOGLE_PRIVATE_KEY ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n") : process.env.GOOGLE_OBJECT?.replace(/\\n/g, "\n"),
       },
       scopes: [
         "https://www.googleapis.com/auth/drive",
