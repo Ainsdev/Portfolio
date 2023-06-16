@@ -1,9 +1,9 @@
 'use client'
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Check } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox"
 import { MouseEvent } from "react";
 
-export default function CardWithGlow({ children, checked }: { children: React.ReactNode, checked: boolean }) {
+export default function CardWithGlow({ children, checked,field }: { children: React.ReactNode, checked: boolean }) {
     let mouseX = useMotionValue(0);
     let mouseY = useMotionValue(0);
 
@@ -36,7 +36,10 @@ export default function CardWithGlow({ children, checked }: { children: React.Re
                 }}
             />
             <div className="absolute left-3 top-3 h-5 w-5 rounded-3xl border-2 border-sky-500 bg-white">
-                {checked && <Check className="h-full w-full text-black" />}
+                {checked && <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />}
             </div>
             {children}
         </div>
