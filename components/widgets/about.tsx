@@ -1,6 +1,7 @@
 "use client"
 
 import React, { SetStateAction, type FC } from "react"
+import Link from "next/link"
 
 import {
   Tooltip,
@@ -33,7 +34,7 @@ const About: FC<AboutProps> = ({ setCursorProps }) => {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
-                <h1 className="animate-wobble-ver-left px-2 text-6xl font-bold text-primary">
+                  <h1 className="animate-wobble-ver-left px-2 text-6xl font-bold text-primary">
                     Guilad
                   </h1>
                 </TooltipTrigger>
@@ -57,7 +58,9 @@ const About: FC<AboutProps> = ({ setCursorProps }) => {
           bussiness and impact the user with creativity 🪄, I simply like
           everything that goes behind the creation of a solution.
         </p>
-        <p className="underline">Know More</p>
+        <Link href="/about">
+          <p className="underline">Know More</p>
+        </Link>
       </article>
       <article
         className="relative mt-5 h-full w-full overflow-hidden sm:bg-secondary"
