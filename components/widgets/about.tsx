@@ -58,12 +58,29 @@ const About: FC<AboutProps> = ({ setCursorProps }) => {
           bussiness and impact the user with creativity 🪄, I simply like
           everything that goes behind the creation of a solution.
         </p>
-        <Link href="/about">
-          <p className="underline">Know More</p>
-        </Link>
+        <p className="underline">Know More</p>
+        <div className="mt-5 flex flex-col items-start justify-start">
+          <div className="flex flex-row">
+            <p className="text-lg font-light">👀SEARCHING</p>
+            <p className="text-lg font-bold text-primary">NEW</p>
+            <p className="text-lg font-light">ADVENTURES</p>
+          </div>
+          <div className="flex flex-row items-start justify-center">
+            <p className="text-lg font-light">👨‍💻</p>
+            <p className="text-lg font-bold text-primary">DEVELOPING</p>
+            <p className="text-lg font-light">SOLUTIONS</p>
+          </div>
+          {/* <div className="mt-2 flex flex-row items-start justify-center">
+            <div className="flex flex-col items-center justify-stretch gap-0 rounded-xl bg-secondary p-2 text-white">
+            <p className="text-xl font-extrabold leading-loose">+2</p>
+            <p className="text-lg font-semibold">YEARS</p>
+            <p className="text-lg font-bold">CODING</p>
+          </div>
+          </div> */}
+        </div>
       </article>
       <article
-        className="relative mt-5 h-full w-full overflow-hidden sm:bg-secondary"
+        className="relative mt-5 h-full w-full overflow-hidden text-primary sm:bg-secondary"
         style={{
           clipPath: "polygon(0 2%, 100% 0, 100% 100%, 12% 100%)",
         }}
@@ -73,14 +90,15 @@ const About: FC<AboutProps> = ({ setCursorProps }) => {
           <h1 className="pl-10 font-bold text-pink-400">Best</h1>
           <h1 className="pl-16 font-bold">Way</h1>
           <h1 className="pl-16 font-bold">To</h1>
-          <h1 className="pl-10 font-bold text-primary">Predict</h1>
+          <h1 className="pl-10 font-bold text-pink-200">Predict</h1>
           <h1 className="pl-10 font-bold">The</h1>
           <h1 className="text-underline pl-16 font-bold">Future</h1>
           <h1 className="pl-10 font-bold">Is</h1>
-          <h1 className="pl-10 font-bold text-primary underline decoration-wavy">
+          <h1 className="pl-10 font-bold text-pink-400 underline decoration-wavy">
             Creating
           </h1>
           <h1 className="pl-10 font-bold">It</h1>
+          <div className="w-36 pl-10"></div>
         </div>
         <div className="left-0 mt-20 flex animate-marquee text-4xl sm:text-6xl">
           <h1 className="pl-20 font-bold">Creating</h1>

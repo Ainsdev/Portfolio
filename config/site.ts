@@ -15,4 +15,5 @@ export const siteConfig = {
     github: "https://github.com/Ainsdev",
     docs: "https://ui.shadcn.com",
   },
+  lastProject: ""
 }

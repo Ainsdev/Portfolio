@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
         ],
       },
     })
+    // console.log(response)
     return new Response(JSON.stringify({ message: "Exitoso!!"}), {
       headers: { "content-type": "application/json" },
     })

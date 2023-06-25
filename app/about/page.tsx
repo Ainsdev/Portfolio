@@ -1,7 +1,17 @@
-export default function AboutPage() {
+"use client"
+
+import Flashcards from "@/components/widgets/projects"
+
+const AboutPage = () => {
   return (
-    <div>
-      <h1>Hello Page About</h1>
+    <div className="flex h-screen w-screen items-center justify-center p-96">
+      <div className="w-96 overflow-hidden bg-red-500">
+        <div className="w-max">
+          <Flashcards />
+        </div>
+      </div>
     </div>
   )
 }
+
+export default AboutPage

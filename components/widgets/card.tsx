@@ -3,7 +3,7 @@ import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Checkbox } from "@/components/ui/checkbox"
 import { MouseEvent } from "react";
 
-export default function CardWithGlow({ children, checked,field }: { children: React.ReactNode, checked: boolean }) {
+export default function CardWithGlow({ children, checked }: any) {
     let mouseX = useMotionValue(0);
     let mouseY = useMotionValue(0);
 
@@ -37,8 +37,8 @@ export default function CardWithGlow({ children, checked,field }: { children: Re
             />
             <div className="absolute left-3 top-3 h-5 w-5 rounded-3xl border-2 border-sky-500 bg-white">
                 {checked && <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
+                  checked={checked}
+                  onCheckedChange={() => {}}
                 />}
             </div>
             {children}

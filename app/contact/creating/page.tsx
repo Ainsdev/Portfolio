@@ -168,7 +168,7 @@ const CreatingPage = () => {
                         setChecked([!checked[0], false])
                       }}
                     >
-                      <CardWithGlow checked={checked[0]}>
+                      <CardWithGlow checked={checked[0]} >
                         {pricingData2}
                       </CardWithGlow>
                     </div>

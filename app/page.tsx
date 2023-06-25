@@ -5,7 +5,9 @@ import { motion, useScroll } from "framer-motion"
 
 import About from "@/components/widgets/about"
 import CardWithGlow from "@/components/widgets/card"
+import CarouselItem from "@/components/widgets/carousel/carousel-item"
 import WindowTab from "@/components/widgets/window"
+import LayoutCards from "@/components/widgets/projects"
 
 export default function IndexPage() {
   const { scrollY } = useScroll()
@@ -98,7 +100,7 @@ export default function IndexPage() {
         <div className="absolute top-40 flex w-screen overflow-hidden p-2 md:hidden">
           <motion.h1
             initial="hidden"
-            animate={{ x: scroll * 22, opacity: 1 }}
+            animate={{ x: scroll * -6, opacity: 1 }}
             className="whitespace-nowrap text-5xl  font-bold md:text-[220px]"
           >
             Learning, Building, and Exploring
@@ -145,38 +147,29 @@ export default function IndexPage() {
           </motion.h1>
         </div>
       </section>
-      <div className="absolute bottom-5 left-1/2 animate-bounce">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          className="h-6 w-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
-      </div>
-      <div className="h-screen"></div>
-      <div className="z-40 mt-48 px-20 sm:mt-48">
+      <section className="mt-[100vh] flex h-max w-screen flex-col justify-center">
+      <div className="z-40 mt-48 px-20">
         <h1 className="text-5xl font-bold text-accent underline md:text-7xl">
           About Me
         </h1>
       </div>
       <About setCursorProps={setCursorProps} />
-      <div className="z-40 mt-36 inline-block w-max px-20 text-center">
-        <h1 className="text-7xl font-bold text-accent underline">
+      <div className="z-40 mt-36 inline-block w-full px-20 ">
+        <h1 className="text-5xl font-bold text-accent underline md:text-7xl">
           My Projects
         </h1>
       </div>
-      {/* <CardWithGlow /> */}
-      <div className="z-40 mt-36 inline-block w-max px-20 text-center">
-        <h1 className="text-7xl font-bold text-accent">Building... 🛠️</h1>
+      <div className="scrollbar-thin scrollbar-thumb-primary scrollbar-track-white scrollbar-thumb-rounded-full scrollbar-track scrollback flex w-full flex-row overflow-scroll py-20">
+            <CardWithGlow>
+              <div className="flex h-full w-full flex-col items-center justify-center">
+                <h1 className="text-5xl font-bold text-accent">Building... 🛠️</h1>
+                </div>
+            </CardWithGlow>
+        </div>
+      <div className="z-40 mt-36 inline-block w-full px-20 text-start">
+        <h1 className="text-5xl font-bold text-accent">Building... 🛠️</h1>
       </div>
+      </section>
     </main>
   )
 }

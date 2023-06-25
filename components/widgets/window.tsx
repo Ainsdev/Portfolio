@@ -28,7 +28,7 @@ const WindowTab = () => {
             </div>
             <div className="relative flex h-96 flex-col items-center justify-center gap-10 rounded-b-lg border-t-0 bg-secondary pb-5 drop-shadow-lg backdrop-blur-lg xl:h-[520px]">
                 <div>
-                    <h1 className='pt-5 text-center text-4xl font-bold xl:text-5xl'>Welcome to my Portfolio ✌️</h1>
+                    <h1 className='pt-5 text-center text-4xl font-bold xl:text-5xl'>Welcome, u good?✌️</h1>
                 </div>
                 <div className='z-50'>
                     <HomeButton title='Minimalist' link='/simple' description='More Simple Portafolio' color='bg-white' />
