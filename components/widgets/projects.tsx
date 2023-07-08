@@ -1,98 +1,139 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-const cards = [1, 2, 3, 4, 5,6,7,8,9];
-const cardVariants = {
-  selected: {
-    rotateY: 180,
-    scale: 1.1,
-    transition: { duration: .35 },
-    zIndex: 10,
-    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px'
+"use client"
+
+import React, { MouseEvent, useContext, useState } from "react"
+import clsx from "clsx"
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+} from "framer-motion"
+
+const wrapperVariants = {
+  initial: {
+    clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+    transition: { duration: 0.4 },
   },
-  notSelected: (i: number) => ({
-    rotateY: i * 15,
-    scale: 1 - Math.abs(i * 0.15),
-    x: i ? i * 50 : 0,
-    opacity: 1 - Math.abs(i * .15),
-    zIndex: 10 - Math.abs(i),
-    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px',
-    transition: { duration: .35 }
-  })
+  animate: {
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    transition: { duration: 0.4, staggerChildren: 0.1 },
+  },
+  exit: {
+    clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)",
+    transition: { duration: 0.4 },
+  },
 }
-const Flashcards = () => {
-    const [selectedCard, setSelectedCard] = useState(null) as React.ComponentState;
-    const [{ 
-      startX,
-      startScrollLeft,
-      isDragging
-    }, setDragStart] = useState({ 
-      startX: undefined, 
-      startScrollLeft: undefined, 
-      isDragging: false
-    }) as React.ComponentState;
-    const containerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-    const cardRefs = useRef(new Array());
-    useEffect(() => {
-      const { scrollWidth, clientWidth } = containerRef.current;
-      const halfScroll = (scrollWidth - clientWidth) / 2;
-      containerRef.current.scrollLeft = halfScroll;
-    }, [containerRef.current]); 
-    const handleMouseDown = (e: { pageX: number; }) => {
-      setDragStart({ 
-        startX: e.pageX - containerRef.current.offsetLeft,
-        startScrollLeft: containerRef.current.scrollLeft,
-        isDragging: true
-      });
-    }
-    const handleMouseMove = (e: { pageX: number; }) => {
-      if (!isDragging || selectedCard) return;
-      const x = e.pageX - containerRef.current.offsetLeft;
-      const walk = x - startX;
-      containerRef.current.scrollLeft = startScrollLeft - walk;
-    }
-    const selectCard = (card: number | React.SetStateAction<null>) => {
-      setSelectedCard(selectedCard ? null : card);
-      
-      if (card && !selectedCard) {
-        cardRefs.current[card as number - 1].scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        }); 
-      }
-    }
-    const handleCardMouseUp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, card: number) => {
-      if (isDragging) {
-        const x = e.pageX - containerRef.current.offsetLeft;
-        const walk = x - startX;
-        if (Math.abs(walk) < 5) selectCard(card);
-      } else selectCard(card);
-    }
-    return (
-      <div 
-        className="flashcards"
-        onMouseDown={handleMouseDown}
-        onMouseUp={() => setDragStart((prev: any) => ({ ...prev, isDragging: false }))}
+const squareVariants = {
+  initial: {
+    opacity: 0,
+    scale: 0.3,
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+  },
+}
+const ClipPathTransition = () => {
+  const [selectedSquare, setSelectedSquare] = useState(null) as any
+  let mouseX = useMotionValue(0)
+  let mouseY = useMotionValue(0)
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    let { left, top } = currentTarget.getBoundingClientRect()
+
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }
+  const renderSquares = () => {
+    const squares = ["yellow", "green", "green", "secondary"]
+    return squares.map((color, i) => (
+      // <motion.div
+      //   key={i}
+      //   className='relative m-16 h-64 w-64 cursor-pointer rounded-2xl bg-secondary shadow-2xl transition-all hover:translate-y-3'
+      //   onClick={() => setSelectedSquare(color)}
+      //   variants={squareVariants}
+      //   transition={{ duration: .2, type: 'spring' }}
+      // >
+      //   <h1 className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-white">{color}</h1>
+      // </motion.div>
+      <div
+        key={i}
+        className="group relative w-max rounded-xl border border-white/10 bg-gray-900 px-8 py-16 shadow-2xl"
         onMouseMove={handleMouseMove}
       >
-        <div 
-          className="flashcards__container" 
-          ref={containerRef}
+        <motion.div
+          onClick={() => setSelectedSquare(color)}
+          variants={squareVariants}
+          transition={{ duration: 0.2, type: "spring" }}
+          className="relative gap-8 -inset-px m-16 flex h-64 w-96 cursor-pointer flex-col rounded-xl  opacity-0 ring-1 ring-primary drop-shadow-[0_20px_40px_rgba(14,_0,_255,_0.4)] backdrop-blur-xl transition-all"
+          style={{
+            background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(14, 165, 233, 0.16),
+              transparent 80%
+            )
+          `,
+          }}
         >
-          {cards.map((card, i) => (
-            <motion.div 
-              className="card" 
-              key={card}
-              ref={el => cardRefs.current.push(el)}
-              onMouseUp={e => handleCardMouseUp(e, card)}
-              variants={cardVariants}
-              animate={selectedCard === card ? "selected" : "notSelected"}
-              custom={selectedCard ? selectedCard - card : 0}
-            />
-          ))}
-        </div>
+          <div className="bg-base-2 flex h-10  w-full items-center justify-end space-x-1.5 rounded-t-lg px-4">
+            <div className="mr-20 rounded-b-lg bg-black p-2 font-semibold text-white">
+              YOURMARKET
+            </div>
+            <div className="h-2 w-2 rounded-full bg-green-400"></div>
+            <div className="h-2 w-2 rounded-full bg-yellow-400"></div>
+            <div className="h-2 w-2 rounded-full bg-red-500"></div>
+          </div>
+        </motion.div>
       </div>
-    )
+    ))
+  }
+  return (
+    <div
+      className={`cp-transition cp-transition__container cp-transition__container--${selectedSquare}`}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {selectedSquare ? (
+          <motion.div
+            className={`card card__wrapper card__wrapper--${selectedSquare} bg-red-500`}
+            key="card"
+            variants={wrapperVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold">Lorem ipsum</h2>
+              <button
+                className="bg-transparent text-white focus:outline-none"
+                onClick={() => setSelectedSquare(null)}
+              >
+                X
+              </button>
+            </div>
+            <div className="grid grid-cols-1 content-center gap-8 ">
+              <div className="h-36 w-36 rounded-3xl bg-slate-500" />
+              <div className="text-justify text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+                ea neque quidem exercitationem possimus.
+              </div>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            className="flex h-full w-full items-center justify-center"
+            key="squares"
+            variants={wrapperVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            {renderSquares()}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
 }
 
-export default Flashcards
+export default ClipPathTransition

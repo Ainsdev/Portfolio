@@ -31,7 +31,7 @@ const WindowTab = () => {
                     <h1 className='pt-5 text-center text-4xl font-bold xl:text-5xl'>Welcome, u good?✌️</h1>
                 </div>
                 <div className='z-50'>
-                    <HomeButton title='Minimalist' link='/simple' description='More Simple Portafolio' color='bg-white' />
+                    <HomeButton title='Projects' link='/simple' description='See My Projects' color='bg-white' />
                 </div>
                 <HomeButton title='Contact Me' link='/contact/contacting' description='I Answer quickly :)' color='bg-accent' />
                 <div className='absolute bottom-0 right-0 flex h-8 w-28 items-center justify-center gap-3 rounded-tl-xl bg-blue-300 '>

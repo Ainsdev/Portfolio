@@ -1,7 +1,7 @@
 'use client'
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Checkbox } from "@/components/ui/checkbox"
 import { MouseEvent } from "react";
+import { Checkbox } from "@/components/ui/checkbox"
 
 export default function CardWithGlow({ children, checked }: any) {
     let mouseX = useMotionValue(0);

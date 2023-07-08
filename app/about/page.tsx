@@ -1,13 +1,13 @@
 "use client"
 
-import Flashcards from "@/components/widgets/projects"
+import ClipPathTransition from "@/components/widgets/projects"
 
 const AboutPage = () => {
   return (
-    <div className="flex h-screen w-screen items-center justify-center p-96">
-      <div className="w-96 overflow-hidden bg-red-500">
-        <div className="w-max">
-          <Flashcards />
+    <div className="flex h-screen w-screen items-center justify-center p-16">
+      <div className="flex h-1/2 w-2/3 flex-row items-center justify-center overflow-hidden bg-green-500">
+        <div className="flex h-max w-max items-center justify-center overflow-x-scroll">
+          <ClipPathTransition />
         </div>
       </div>
     </div>
