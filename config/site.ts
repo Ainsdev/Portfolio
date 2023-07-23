@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   name: "My Portfolio",
   description:
-    "Portoflio de web developer creado con next.js y tailwind",
+    "Portoflio de developer creado con next.js y tailwind",
   mainNav: [
     {
       title: "Home",
@@ -13,7 +13,7 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/AinsGp",
     github: "https://github.com/Ainsdev",
-    docs: "https://ui.shadcn.com",
+    linkedin: "https://www.linkedin.com/in/ains-gonzalez/",
   },
-  lastProject: ""
+  lastProject: "https://yourpoints.vercel.app/"
 }

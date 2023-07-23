@@ -53,14 +53,14 @@ const About: FC<AboutProps> = ({ setCursorProps }) => {
             </p>
           </div>
         </div>
-        <p className="pt-5 text-lg font-medium leading-relaxed tracking-tight sm:pr-72 sm:leading-loose">
+        <p className="pt-5 text-lg font-medium leading-relaxed tracking-tight sm:leading-loose xl:pr-16">
           I love💖 solving problems with technology, Im an enthusiast of
           bussiness and impact the user with creativity 🪄, I simply like
           everything that goes behind the creation of a solution.
         </p>
         <p className="underline">Know More</p>
         <div className="mt-5 flex flex-col items-start justify-start">
-          <div className="flex flex-row">
+          <div className="flex flex-row items-start justify-center">
             <p className="text-lg font-light">👀SEARCHING</p>
             <p className="text-lg font-bold text-primary">NEW</p>
             <p className="text-lg font-light">ADVENTURES</p>
@@ -80,7 +80,7 @@ const About: FC<AboutProps> = ({ setCursorProps }) => {
         </div>
       </article>
       <article
-        className="relative mt-5 h-full w-full overflow-hidden text-primary sm:bg-secondary"
+        className="relative mt-5 h-full w-full overflow-hidden text-accent dark:text-primary sm:bg-secondary"
         style={{
           clipPath: "polygon(0 2%, 100% 0, 100% 100%, 12% 100%)",
         }}

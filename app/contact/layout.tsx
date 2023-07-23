@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 let tabs = [
-    { id: "contact/contacting", label: "Contactame" },
-    { id: "contact/creating", label: "Crear Web" },
+    { id: "contacting", label: "Contactame" },
+    { id: "creating", label: "Crear Web" },
 ];
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

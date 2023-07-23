@@ -1,6 +1,6 @@
 "use client"
 
-import ClipPathTransition from "@/components/widgets/projects"
+import ClipPathTransition from "@/components/widgets/carousel/projects"
 
 const AboutPage = () => {
   return (
